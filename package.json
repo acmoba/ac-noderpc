@@ -1,0 +1,25 @@
+{
+  "name": "ac-noderpc",
+  "version": "1.0.0",
+  "description": "A simple, fast RPC for Node.JS",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/acmoba/ac-noderpc.git"
+  },
+  "keywords": [
+    "rpc"
+  ],
+  "author": "Xiongfei Shi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/acmoba/ac-noderpc/issues"
+  },
+  "homepage": "https://github.com/acmoba/ac-noderpc#readme",
+  "dependencies": {
+    "protocol-buffers": "^3.1.6"
+  }
+}

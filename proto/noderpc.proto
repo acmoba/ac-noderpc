@@ -1,0 +1,57 @@
+/**
+ * Copyright (c) 2015-2016 上海魔霸网络技术, Inc. All Rights Reserved.
+ *
+ * AC-NodeRPC
+ *
+ *  shixiongfei@7fgame.com
+ *
+ */
+
+package AC.Protocol.NodeRPC;
+
+
+enum MessageType
+{
+    REQUEST_LOGIN       =   0x1001;
+    RESPONSE_LOGIN      =   0x1002;
+
+    REQUEST_KEEPALIVE   =   0x1003;
+    RESPONSE_KEEPALIVE  =   0x1004;
+
+    REQUEST_CALL        =   0x1010;
+    RESPONSE_CALL       =   0x1011;
+}
+
+enum LoginResultType
+{
+    LOGIN_SUCCESS       =   0;
+    LOGIN_AUTH_FAILED   =   1;
+}
+
+
+message MessageHeader
+{
+    required int32      message_type = 1;
+    required bytes      message_body = 2;
+}
+
+
+message LoginRequest
+{
+    optional string     auth = 1;
+}
+
+message LoginResponse
+{
+    required int32      result = 1;
+    optional string     session_id = 2;
+}
+
+
+message CallRequest
+{
+}
+
+message CallResponse
+{
+}
