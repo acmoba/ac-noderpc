@@ -19,6 +19,6 @@ var opt = {
     type    :   'tcp',
     host    :   '127.0.0.1',
     port    :   12345,
-    auth    :   '12345'
+    auth    :   'abcdef'
 };
 rpc_client.tryConnect(opt);

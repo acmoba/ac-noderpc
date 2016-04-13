@@ -48,6 +48,15 @@ message LoginResponse
 }
 
 
+message KeepAliveRequest
+{
+}
+
+message KeepAliveResponse
+{
+}
+
+
 message CallRequest
 {
 }
