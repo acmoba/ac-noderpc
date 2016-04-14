@@ -19,7 +19,7 @@ Methods:
 
 		opt {
 			type    :   'tcp',
-			host	:	'0.0.0.0',
+			host	:   '0.0.0.0',
     		port    :   12345,
     		auth    :   'your password'
 		}
@@ -73,7 +73,7 @@ Methods:
 
 		opt {
 				type    :   'tcp',
-				host	:	'0.0.0.0',
+				host	:   '0.0.0.0',
 	    		port    :   12345,
 	    		auth    :   'your password'
 		}
