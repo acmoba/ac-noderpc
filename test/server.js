@@ -11,12 +11,6 @@ var noderpc = require('../')
 
 var rpc_server = new noderpc.ServerRPC();
 
-var opt = {
-    type    :   'tcp',
-    port    :   12345,
-    auth    :   'abcdef'
-};
-
 function sum() {
     var s = 0;
     for ( var i = 0; i < arguments.length; i++) {
@@ -27,8 +21,8 @@ function sum() {
 function test() {
     console.log('Just test, no return.');
 };
-rpc_server.publish(sum, sum);
-rpc_server.publish(test, test);
+rpc_server.publish(sum);
+rpc_server.publish(test);
 rpc_server.publish('add', function(a, b) {
     return a + b;
 });
@@ -40,4 +34,8 @@ rpc_server.publish('getobj', function() {
     };
 });
 
-rpc_server.run(opt);
+rpc_server.run({
+    type    :   'tcp',
+    port    :   12345,
+    auth    :   'abcdef'
+});

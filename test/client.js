@@ -11,7 +11,7 @@ var noderpc = require('../')
 
 var rpc_client = new noderpc.ClientRPC();
 
-rpc_client.event.on('err', function(err) {
+rpc_client.event.on('error', function(err) {
     console.log(err);
 });
 
@@ -51,11 +51,9 @@ rpc_client.event.on('disconnected', function() {
     console.log('disconnected');
 });
 
-var opt = {
+rpc_client.tryConnect({
     type    :   'tcp',
     host    :   '127.0.0.1',
     port    :   12345,
     auth    :   'abcdef'
-};
-
-rpc_client.tryConnect(opt);
+});
