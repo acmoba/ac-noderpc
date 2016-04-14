@@ -16,4 +16,28 @@ var opt = {
     port    :   12345,
     auth    :   'abcdef'
 };
+
+function sum() {
+    var s = 0;
+    for ( var i = 0; i < arguments.length; i++) {
+        s += arguments[i];
+    }
+    return s;
+};
+function test() {
+    console.log('Just test, no return.');
+};
+rpc_server.publish(sum, sum);
+rpc_server.publish(test, test);
+rpc_server.publish('add', function(a, b) {
+    return a + b;
+});
+rpc_server.publish('getobj', function() {
+    return {
+        a : 'abc',
+        d : 'cde',
+        c : [1, 2, 3]
+    };
+});
+
 rpc_server.run(opt);

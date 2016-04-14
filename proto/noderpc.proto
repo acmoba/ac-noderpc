@@ -28,6 +28,13 @@ enum LoginResultType
     LOGIN_AUTH_FAILED   =   1;
 }
 
+enum CallResultType
+{
+    CALL_SUCCESS        =   0;
+    CALL_NO_METHOD      =   1;
+    CALL_AUTH_FAILED    =   2;
+}
+
 
 message MessageHeader
 {
@@ -45,6 +52,7 @@ message LoginResponse
 {
     required int32      result = 1;
     optional string     session_id = 2;
+    repeated string     methods = 3;
 }
 
 
@@ -59,8 +67,15 @@ message KeepAliveResponse
 
 message CallRequest
 {
+    required string     call_id = 1;
+    required string     method = 2;
+    optional bytes      arguments = 3;
 }
 
 message CallResponse
 {
+    required string     call_id = 1;
+    required int32      result = 2;
+    required string     method = 3;
+    optional bytes      returns = 4;
 }
