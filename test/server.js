@@ -8,7 +8,6 @@
  */
 
 var noderpc = require('../')
-
 var rpc_server = new noderpc.ServerRPC();
 
 function sum() {

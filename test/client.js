@@ -8,7 +8,6 @@
  */
 
 var noderpc = require('../')
-
 var rpc_client = new noderpc.ClientRPC();
 
 rpc_client.event.on('error', function(err) {
