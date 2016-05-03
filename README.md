@@ -30,15 +30,32 @@ Full example:
 	var rpc_server = new noderpc.ServerRPC();
 
 	function sum() {
+		var ret = arguments[0];     /* first argument is return callback. */
 	    var s = 0;
-	    for ( var i = 0; i < arguments.length; i++) {
+	    for ( var i = 1; i < arguments.length; i++) {
 	        s += arguments[i];
 	    }
-	    return s;
+
+	    ret(s);
 	};
 	rpc_server.publish(sum);
-	rpc_server.publish('add', function(a, b) {
-	    return a + b;
+
+	function test(ret) {
+    	console.log('Just test, no return.');
+    	ret(null);		/* return callback is required otherwise client will receive a timeout error.  */
+	};
+	rpc_server.publish(test);
+
+	rpc_server.publish('add', function(ret, a, b) {
+	    ret(a + b);
+	});
+
+	rpc_server.publish('getobj', function(ret) {
+	    ret({
+	        a : 'abc',
+	        d : 'cde',
+	        c : [1, 2, 3]
+	    }, 4, 5, 6);
 	});
 
 	rpc_server.run({
@@ -101,7 +118,12 @@ Full example:
 	            console.log(result);
 	        }
 	    }, 1, 2, 3, 4);
-	
+
+		rpc_client.test(function(err, result) {
+	        console.log('test: ' + err);
+	        console.log('test: ' + result);
+	    });	
+
 	    rpc_client.add(function(err, result) {
 	        if ( err ) {
 	            console.log(err);
@@ -109,6 +131,12 @@ Full example:
 	            console.log(result);
 	        }
 	    }, 5, 7);
+
+		rpc_client.getobj(function(err, obj, a, b, c) {
+	        console.log('getobj: ' + err);
+	        console.log('getobj: ' + JSON.stringify(obj));
+	        console.log('getobj: ' + a + ', ' + b + ', ' + c);
+	    });
 	
 	});
 

@@ -1,6 +1,6 @@
 {
   "name": "ac-noderpc",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A simple, fast RPC for Node.JS",
   "main": "index.js",
   "scripts": {

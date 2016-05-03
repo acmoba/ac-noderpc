@@ -36,9 +36,10 @@ rpc_client.event.on('ready', function() {
         }
     }, 5, 7);
 
-    rpc_client.getobj(function(err, result) {
+    rpc_client.getobj(function(err, obj, a, b, c) {
         console.log('getobj: ' + err);
-        console.log('getobj: ' + JSON.stringify(result));
+        console.log('getobj: ' + JSON.stringify(obj));
+        console.log('getobj: ' + a + ', ' + b + ', ' + c);
     });
 });
 
